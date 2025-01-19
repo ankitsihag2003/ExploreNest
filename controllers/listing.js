@@ -9,7 +9,7 @@ module.exports.index = async (req,res)=>{
         query.propertyType= propertyType;
     }
     const allListings = await Listing.find(query);
-    res.render("listings/index",{allListings});
+    res.render("listings/index.ejs",{allListings});
 };
 module.exports.renderNewForm = (req,res)=>{
     res.render("listings/new.ejs");
@@ -21,7 +21,7 @@ module.exports.showListings=async (req,res)=>{
         req.flash("error","Listing you requested for does not exists!");
         res.redirect("/listings");
     }
-    res.render("listings/show",{listing});
+    res.render("listings/show.ejs",{listing});
 };
 module.exports.createListing = async (req,res)=>{
     let url = req.file.path;
